@@ -1,12 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Forum.App.DataBase.Context;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -33,9 +28,8 @@ namespace Forum.App
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
-            services.AddEntityFrameworkNpgsql().AddDbContext<ForumDbContext>(opt=>opt.UseNpgsql("User ID=;Password=;Host=localhost;Port=5432;Database=marketplace.app;"));
-            
+            //services.AddEntityFrameworkNpgsql().AddDbContext<ForumDbContext>(opt=>opt.UseNpgsql("User ID=;Password=;Host=localhost;Port=5432;Database=Forum.app;"));
+            services.AddEntityFrameworkSqlServer().AddDbContext<ForumDbContext>(opt => opt.UseSqlServer("User ID=;Password=;Host=localhost;Port=5432;Database=Forum;"));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
@@ -51,7 +45,7 @@ namespace Forum.App
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            Migrate(app);
+            //Migrate(app);
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -67,7 +61,6 @@ namespace Forum.App
             app.UseCookiePolicy();
 
             app.UseMvc();
-
         }
     }
 }

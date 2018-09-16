@@ -6,5 +6,7 @@ namespace Forum.App.DataBase.Entities
     {
         [Key]
         public int Id { get; set; }
+
+        public override int GetHashCode() => Id.GetHashCode();
     }
 }

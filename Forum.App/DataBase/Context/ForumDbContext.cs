@@ -5,9 +5,8 @@ namespace Forum.App.DataBase.Context
 {
     public class ForumDbContext : DbContext
     {
-        public ForumDbContext(DbContextOptions opt) :base(opt)
+        public ForumDbContext(DbContextOptions opt) : base(opt)
         {
-
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
