@@ -1,12 +1,13 @@
-using Forum.App.DataBase.Entities;
+using Forum.Infrastructure.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Forum.App.DataBase.Context
+namespace Forum.Data
 {
-    public class ForumDbContext : DbContext
+    public class GeneralContext : DbContext
     {
-        public ForumDbContext(DbContextOptions opt) : base(opt)
+        public GeneralContext(DbContextOptions<GeneralContext> options) : base(options)
         {
+            Database.EnsureCreated();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

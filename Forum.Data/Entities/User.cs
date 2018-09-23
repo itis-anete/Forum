@@ -1,4 +1,4 @@
-﻿namespace Forum.App.DataBase.Entities
+﻿namespace Forum.Infrastructure.Entities
 {
     public class User : Identity
     {

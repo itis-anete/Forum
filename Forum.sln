@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Forum.App", "Forum.App\Forum.App.csproj", "{AA0AB5B0-D2B6-4792-9AB1-127CFEF1B579}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Forum.Data", "Forum.App\Forum.Data.csproj", "{AA0AB5B0-D2B6-4792-9AB1-127CFEF1B579}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Forum.Data", "Forum.Data\Forum.Data.csproj", "{28CAB996-3976-4116-8E1A-BD8471455167}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Forum.Infrastructure", "Forum.Data\Forum.Infrastructure.csproj", "{28CAB996-3976-4116-8E1A-BD8471455167}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Forum.Web.API", "Forum.Web.API\Forum.Web.API.csproj", "{2821AC27-FA1C-41F7-A063-1114C299BA93}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Forum.Web.API", "Forum.Web.API\Forum.Web.API.csproj", "{2821AC27-FA1C-41F7-A063-1114C299BA93}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
