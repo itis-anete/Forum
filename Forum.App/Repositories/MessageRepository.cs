@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Forum.Infrastructure.Entities;
 using System.Threading.Tasks;
 
 namespace Forum.Data.Repositories
@@ -13,5 +11,12 @@ namespace Forum.Data.Repositories
         {
             context = givenContext;
         }
+
+        public async Task AddMessage(Message message)
+        {
+            await context.AddAsync(message);
+        }
+
+        public int Save() => context.SaveChanges();
     }
 }
