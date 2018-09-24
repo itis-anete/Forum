@@ -1,17 +1,16 @@
-using Forum.App.DataBase.Context;
-using Forum.App.DataBase.Entities;
+using Forum.Infrastructure.Entities;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Forum.App.Pages.SubforumView
+namespace Forum.Data.Pages.SubforumView
 {
     public class SubforumModel : PageModel
     {
-        private readonly ForumDbContext dbContext;
+        private readonly GeneralContext dbContext;
 
-        public SubforumModel(ForumDbContext dbContext)
+        public SubforumModel(GeneralContext dbContext)
         {
             this.dbContext = dbContext;
         }

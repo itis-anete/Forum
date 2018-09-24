@@ -1,4 +1,3 @@
-using Forum.App.DataBase.Context;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -7,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Forum.App
+namespace Forum.Data
 {
     public class Startup
     {
@@ -28,8 +27,8 @@ namespace Forum.App
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            //services.AddEntityFrameworkNpgsql().AddDbContext<ForumDbContext>(opt=>opt.UseNpgsql("User ID=;Password=;Host=localhost;Port=5432;Database=Forum.app;"));
-            services.AddEntityFrameworkSqlServer().AddDbContext<ForumDbContext>(opt => opt.UseSqlServer("User ID=;Password=;Host=localhost;Port=5432;Database=Forum;"));
+            //services.AddEntityFrameworkNpgsql().AddDbContext<GeneralContext>(opt=>opt.UseNpgsql("User ID=;Password=;Host=localhost;Port=5432;Database=Forum.Data;"));
+            services.AddEntityFrameworkSqlServer().AddDbContext<GeneralContext>(opt => opt.UseSqlServer("User ID=;Password=;Host=localhost;Port=5432;Database=Forum;"));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
@@ -38,7 +37,7 @@ namespace Forum.App
         {
             using (var scope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
             {
-                scope.ServiceProvider.GetRequiredService<ForumDbContext>().Database.Migrate();
+                scope.ServiceProvider.GetRequiredService<GeneralContext>().Database.Migrate();
             }
         }
 

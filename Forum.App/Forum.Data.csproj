@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Forum.Data\Forum.Infrastructure.csproj" />
+    <ProjectReference Include="..\Forum.PersistedEntities\Forum.PersistedEntities.csproj" />
   </ItemGroup>
 
 </Project>

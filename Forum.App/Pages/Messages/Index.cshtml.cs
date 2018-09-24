@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Forum.Infrastructure.Entities;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using Forum.App.DataBase.Context;
-using Forum.App.DataBase.Entities;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
-namespace Forum.App.Pages.Messages
+namespace Forum.Data.Pages.Messages
 {
     public class IndexModel : PageModel
     {
-        private readonly Forum.App.DataBase.Context.ForumDbContext _context;
+        private readonly Forum.Data.GeneralContext _context;
 
-        public IndexModel(Forum.App.DataBase.Context.ForumDbContext context)
+        public IndexModel(Forum.Data.GeneralContext context)
         {
             _context = context;
         }

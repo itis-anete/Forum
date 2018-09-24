@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 
-namespace Forum.App
+namespace Forum.Data
 {
     public class Program
     {

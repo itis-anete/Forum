@@ -1,16 +1,15 @@
-using Forum.App.DataBase.Context;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Forum.App.Pages
+namespace Forum.Data.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ForumDbContext dbContext;
+        private readonly GeneralContext dbContext;
 
-        public IndexModel(ForumDbContext dbContext)
+        public IndexModel(GeneralContext dbContext)
         {
             this.dbContext = dbContext;
         }
@@ -20,6 +19,6 @@ namespace Forum.App.Pages
             this.Subforums = this.dbContext.Forums.Include(x => x.Subjects).ToList();
         }
 
-        public IEnumerable<Forum.App.DataBase.Entities.Subforum> Subforums { get; set; }
+        public IEnumerable<Forum.Infrastructure.Entities.Subforum> Subforums { get; set; }
     }
 }
