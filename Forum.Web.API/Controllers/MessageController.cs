@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Forum.Web.API.Controllers
 {
-    public class SubjectController : Controller
+    public class MessageController : Controller
     {
         // GET: /<controller>/
         public IActionResult Index()
