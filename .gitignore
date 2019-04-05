@@ -4,10 +4,10 @@
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
 # No configs in repository
-InfoSystem*/appconfig.json
-InfoSystem*/appconfig*.json
-InfoSystem*/appsettings.json
-InfoSystem*/appsettings*.json
+Forum*/appconfig.json
+Forum*/appconfig*.json
+Forum*/appsettings.json
+Forum*/appsettings*.json
 *.appsettings.json
 # User-specific files
 *.suo

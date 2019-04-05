@@ -692,11 +692,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Projects\\VS\\Forum\\Forum\\Forum.Core\\Forum.Core.csproj",
+      "projectUniqueName": "D:\\Projects\\VS\\Forum\\Forum.Core\\Forum.Core.csproj",
       "projectName": "Forum.Core",
-      "projectPath": "D:\\Projects\\VS\\Forum\\Forum\\Forum.Core\\Forum.Core.csproj",
+      "projectPath": "D:\\Projects\\VS\\Forum\\Forum.Core\\Forum.Core.csproj",
       "packagesPath": "C:\\Users\\Azatka\\.nuget\\packages\\",
-      "outputPath": "D:\\Projects\\VS\\Forum\\Forum\\Forum.Core\\obj\\",
+      "outputPath": "D:\\Projects\\VS\\Forum\\Forum.Core\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
