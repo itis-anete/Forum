@@ -10,6 +10,6 @@ namespace Forum.Core.Entities
         public string Text { get; private set; }
         public User Creator { get; private set; }
         public DateTime CreationDate { get; private set; }
-        public ICollection<Message> Messages { get; private set; }
+        public Guid ThemeId { get; private set; }   
     }
 }
