@@ -4,11 +4,11 @@ using System.Text;
 
 namespace Forum.Core.Entities
 {
-    class Comment
+    public class Comment
     {
-        public User Writer{ get; private set; }
-        public string Text { get; private set; }
-        public DateTime CreationDate { get; private set; }
-        public Guid TopicId { get; private set; }
+        public User Writer{ get; set; }
+        public string Text { get; set; }
+        public DateTime CreationDate { get; set; }
+        public int TopicId { get; set; }
     }
 }

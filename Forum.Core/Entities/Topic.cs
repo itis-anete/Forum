@@ -4,12 +4,12 @@ using System.Text;
 
 namespace Forum.Core.Entities
 {
-    class Topic
+    public class Topic
     {
-        public string Head { get; private set; }
-        public string Text { get; private set; }
-        public User Creator { get; private set; }
-        public DateTime CreationDate { get; private set; }
-        public Guid ThemeId { get; private set; }   
+        public string Head { get; set; }
+        public string Text { get; set; }
+        public User Creator { get; set; }
+        public DateTime CreationDate { get; set; }
+        public int ThemeId { get; set; }   
     }
 }

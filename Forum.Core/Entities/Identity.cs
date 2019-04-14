@@ -6,7 +6,7 @@ namespace Forum.Core.Entities
 {
     public abstract class Identity
     {
-        public Guid Id { get; private set; }
+        public int Id { get; set; }
 
         public override int GetHashCode() => Id.GetHashCode();
     }

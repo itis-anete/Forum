@@ -5,7 +5,11 @@ VisualStudioVersion = 15.0.28307.421
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Forum.Web", "Forum.Web\Forum.Web.csproj", "{5BA05210-B2E5-4BD1-B8D7-C856BF6C3A25}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Forum.Core", "Forum.Core\Forum.Core.csproj", "{18D92C42-51C4-40A0-B529-F27CD769F944}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Forum.Core", "Forum.Core\Forum.Core.csproj", "{18D92C42-51C4-40A0-B529-F27CD769F944}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Forum.Connection", "Forum.Connection\Forum.Connection.csproj", "{67C9E74C-1756-4D0B-8503-235739A990EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Forum.Infrastructure", "Forum.Infrastructure\Forum.Infrastructure.csproj", "{33E23EBC-E070-40F8-A039-250F31EC1329}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{18D92C42-51C4-40A0-B529-F27CD769F944}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18D92C42-51C4-40A0-B529-F27CD769F944}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18D92C42-51C4-40A0-B529-F27CD769F944}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67C9E74C-1756-4D0B-8503-235739A990EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67C9E74C-1756-4D0B-8503-235739A990EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67C9E74C-1756-4D0B-8503-235739A990EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67C9E74C-1756-4D0B-8503-235739A990EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33E23EBC-E070-40F8-A039-250F31EC1329}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33E23EBC-E070-40F8-A039-250F31EC1329}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33E23EBC-E070-40F8-A039-250F31EC1329}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33E23EBC-E070-40F8-A039-250F31EC1329}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

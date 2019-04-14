@@ -4,8 +4,8 @@ using System.Text;
 
 namespace Forum.Core.Entities
 {
-    public class Role : AdminRole
+    public class AdminRole : Identity
     {
-        public int ObjectId { get; set; }
+        public string Name { get;  set; }
     }
 }
