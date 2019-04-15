@@ -10,13 +10,16 @@ using Forum.Connection.Services;
 
 namespace Forum.Web.Controllers
 {
+    [Route("api/[controller]")]
     public class ForumController : Controller
     {
         private readonly ForumService _forumService;
+        private readonly PostService _postService;
 
         public ForumController()
         {
             _forumService = new ForumService();
+            _postService = new PostService();
         }
 
         public ActionResult Index()
@@ -26,10 +29,10 @@ namespace Forum.Web.Controllers
 
         [HttpPost]
         //[Authorize(Roles = "Admin")]
-        [ValidateAntiForgeryToken]
-        public ActionResult CreateForum(string name, string description)
+        //[ValidateAntiForgeryToken]
+        public ActionResult CreateForum(int id, string name, string description)
         {
-            var created = _forumService.Create(name, description);
+            var created = _forumService.Create(id, name, description);
             if (!created)
             {
                 return StatusCode(500);
@@ -39,7 +42,7 @@ namespace Forum.Web.Controllers
 
         [HttpPut]
         //[Authorize(Roles = "Admin")]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public ActionResult EditForum(string name, string newName, string description)
         {
             var edited = _forumService.Edit(name, newName, description);
@@ -52,14 +55,14 @@ namespace Forum.Web.Controllers
 
         [HttpDelete]
         //[Authorize(Roles = "Admin")]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public ActionResult DeleteForum(string name)
         {
             return !_forumService.Delete(name) ? StatusCode(500) : Ok();
         }
 
         [HttpGet]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public ActionResult GetForumByName(string name)
         {
             try
@@ -77,8 +80,17 @@ namespace Forum.Web.Controllers
             }
         }
 
-        [HttpGet]
-        [ValidateAntiForgeryToken]
+        [HttpGet("[action]/{id}")]
+        public ActionResult Topic(int id)
+        {
+            var forum = _forumService.GetById(id);
+            var posts = _postService.GetByForum(id);
+            var ft = new ForumTopic { Forum = forum, Topics = posts };
+            return Ok(ft);
+        }
+
+        [HttpGet("[action]")]
+        //[ValidateAntiForgeryToken]
         public ActionResult GetAllForums()
         {
             try

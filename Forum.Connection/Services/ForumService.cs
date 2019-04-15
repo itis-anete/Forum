@@ -15,7 +15,7 @@
             TestDb = new TestDatabase();
         }
 
-        public bool Create(string name, string description)
+        public bool Create(int id, string name, string description)
         {
             //тут проверяем, есть ли тип данных с названием Forum в системе учёта, то есть посылаем запрос с проверкой
             if (!TestDb.EntityTypes.Contains("Forum"))
@@ -32,7 +32,7 @@
             //после чего добавляем уже сам экзепляр форума с нужным нам названием и описанием
             try
             {
-                TestDb.Forums.Add(new Forum(name, description));
+                TestDb.Forums.Add(new Forum(id, name, description));
                 return true;
             }
             catch
@@ -48,7 +48,7 @@
             var index = TestDb.Forums.FindIndex(x => x.Name == name);
             if (index != -1)
             {
-                TestDb.Forums[index] = new Forum(newName, description);
+                TestDb.Forums[index] = new Forum(TestDb.Forums[index].Id,newName, description);
                 return true;
             }
             return false;
@@ -83,6 +83,12 @@
         public Forum GetByName(string name)
         {
             var forum = TestDb.Forums.Find(x => x.Name == name);
+            return forum;
+        }
+
+        public Forum GetById(int id)
+        {
+            var forum = TestDb.Forums.Find(x => x.Id == id);
             return forum;
         }
 
