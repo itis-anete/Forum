@@ -10,10 +10,11 @@ namespace Forum.Infrastructure
     {
         public List<string> EntityTypes;
         public List<Forum> Forums;
+        public List<Theme> Themes;
 
         public TestDatabase()
         {
-            EntityTypes = new List<string>() { "Forum" };
+            EntityTypes = new List<string>() { "Forum", "Theme" };
             Forums = new List<Forum>() { new Forum("Phones", "All about phones"), new Forum("Phones", "All about phones") };
         }
     }

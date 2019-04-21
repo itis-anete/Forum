@@ -8,6 +8,13 @@ namespace Forum.Core.Entities
     {
         public string Name { get; set; }
         public string Description { get; set; }
-        public int ForumId { get; set; }    
+        public int ForumId { get; set; }
+
+        public Theme(string name, string description, int forumId)
+        {
+            Name = name;
+            Description = description;
+            ForumId = forumId;
+        }
     }
 }

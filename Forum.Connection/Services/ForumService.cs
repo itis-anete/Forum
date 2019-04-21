@@ -39,7 +39,6 @@
             {
                 return false;
             }
-
         }
 
         public bool Edit(string name, string newName, string description)
