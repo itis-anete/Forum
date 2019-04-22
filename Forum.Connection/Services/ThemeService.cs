@@ -40,5 +40,45 @@ namespace Forum.Connection.Services
                 return false;
             }
         }
+
+        public bool Edit(string name, string newName, string newDescription)
+        {
+            var index = TestDb.Themes.FindIndex(x => x.Name == name);
+            if (index != -1)
+            {
+                int newForumId = TestDb.Themes[index].ForumId;
+                TestDb.Themes[index] = new Theme(newName, newDescription, newForumId);
+                return true;
+            }
+            return false;
+        }
+
+        public bool Delete(string name)
+        {
+            try
+            {
+                var theme = TestDb.Themes.Find(x => x.Name == name);
+                if (theme != null)
+                {
+                    TestDb.Themes.Remove(theme);
+                }
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public Theme GetByName(string name)
+        {
+            var theme = TestDb.Themes.Find(x => x.Name == name);
+            return theme;
+        }
+
+        public List<Theme> GetAllTheme()
+        {
+            return TestDb.Themes;
+        }
     }
 }
