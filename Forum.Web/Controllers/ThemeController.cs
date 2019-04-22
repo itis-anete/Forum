@@ -31,5 +31,12 @@ namespace Forum.Web.Controllers
             }
             return Ok();
         }
+
+        [HttpGet]
+        public ActionResult CreateTheme(int? forumId)
+        {
+            ViewBag.ForumId = forumId;
+            return View();
+        }
     }
 }
