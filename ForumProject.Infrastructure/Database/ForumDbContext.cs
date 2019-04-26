@@ -1,0 +1,18 @@
+﻿using ForumProject.Core.Entities;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace ForumProject.Infrastructure.Database
+{
+    public class ForumDbContext : DbContext
+    {
+        public DbSet<Forum> Forums { get; set; }
+
+        public ForumDbContext(DbContextOptions<ForumDbContext> options)
+            : base(options)
+        {
+        }
+    }
+}
