@@ -9,11 +9,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ForumProject.Web.Controllers
 {
-    public class ThemeController : Controller
+    public class TopicController : Controller
     {
-        private IThemeRepository _repository;
+        private ITopicRepository _repository;
 
-        public ThemeController(IThemeRepository repository)
+        public TopicController(ITopicRepository repository)
         {
             _repository = repository;
         }
@@ -21,7 +21,7 @@ namespace ForumProject.Web.Controllers
         [Authorize]
         public IActionResult Index()
         {
-            return View(_repository.GetAllThemes());
+            return View(_repository.GetAllTopics());
         }
 
         [HttpGet]
@@ -32,29 +32,29 @@ namespace ForumProject.Web.Controllers
                 return NotFound();
             }
 
-            var theme = _repository.GetById(id);
+            var topic = _repository.GetById(id);
 
-            if (theme == null)
+            if (topic == null)
             {
                 return NotFound();
             }
 
-            return View(theme);
+            return View(topic);
         }
 
         [HttpGet]
-        public IActionResult Create(int? forumId)
+        public IActionResult Create(int? themeId)
         {
-            ViewData["ForumId"] = forumId;
+            ViewData["ThemeId"] = themeId;
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Theme theme)
+        public async Task<IActionResult> Create(Topic topic)
         {
             try
             {
-                await _repository.Add(theme);
+                await _repository.Add(topic);
             }
             catch
             {
@@ -72,27 +72,27 @@ namespace ForumProject.Web.Controllers
                 return NotFound();
             }
 
-            var theme = _repository.GetById(id);
+            var topic = _repository.GetById(id);
 
-            if (theme == null)
+            if (topic == null)
             {
                 return NotFound();
             }
 
-            return View(theme);
+            return View(topic);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, Theme theme)
+        public async Task<IActionResult> Edit(int id, Topic topic)
         {
-            if (id != theme.Id || theme == null)
+            if (id != topic.Id || topic == null)
             {
                 return NotFound();
             }
 
             try
             {
-                await _repository.Edit(theme);
+                await _repository.Edit(topic);
             }
             catch
             {
@@ -110,24 +110,24 @@ namespace ForumProject.Web.Controllers
                 return NotFound();
             }
 
-            var theme = _repository.GetById(id);
+            var topic = _repository.GetById(id);
 
-            if (theme == null)
+            if (topic == null)
             {
                 return NotFound();
             }
 
-            return View(theme);
+            return View(topic);
         }
 
         [HttpPost]
         public async Task<IActionResult> Delete(int id)
         {
-            var theme = _repository.GetById(id);
+            var topic = _repository.GetById(id);
 
             try
             {
-                await _repository.Delete(theme);
+                await _repository.Delete(topic);
             }
             catch
             {
@@ -137,4 +137,5 @@ namespace ForumProject.Web.Controllers
         }
     }
 }
+
 

@@ -10,6 +10,7 @@ namespace ForumProject.Infrastructure.Database
     {
         public DbSet<Forum> Forums { get; set; }
         public DbSet<Theme> Themes { get; set; }
+        public DbSet<Topic> Topics { get; set; }
 
         public ForumDbContext(DbContextOptions<ForumDbContext> options)
             : base(options)
@@ -17,3 +18,5 @@ namespace ForumProject.Infrastructure.Database
         }
     }
 }
+
+
