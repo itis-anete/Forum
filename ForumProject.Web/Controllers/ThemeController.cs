@@ -4,22 +4,24 @@ using System.Linq;
 using System.Threading.Tasks;
 using ForumProject.Core.Entities;
 using ForumProject.Infrastructure.Database.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ForumProject.Web.Controllers
 {
-    public class ForumController : Controller
+    public class ThemeController : Controller
     {
-        private IForumRepository _repository;
+        private IThemeRepository _repository;
 
-        public ForumController(IForumRepository repository)
+        public ThemeController(IThemeRepository repository)
         {
             _repository = repository;
         }
 
+        [Authorize]
         public IActionResult Index()
         {
-            return View(_repository.GetAllForums());
+            return View(_repository.GetAllThemes());
         }
 
         [HttpGet]
@@ -30,34 +32,36 @@ namespace ForumProject.Web.Controllers
                 return NotFound();
             }
 
-            var forum = _repository.GetByIdAsync(id).Result;
+            var liquid = _repository.GetById(id);
 
-            if (forum == null)
+            if (liquid == null)
             {
                 return NotFound();
             }
 
-            return View(forum);
+            return View(liquid);
         }
 
         [HttpGet]
-        public IActionResult Create()
+        public IActionResult Create(int? forumId)
         {
+            ViewData["ForumId"] = forumId;
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Forum forum)
+        public async Task<IActionResult> Create(Theme theme)
         {
             try
             {
-                await _repository.Add(forum);
-                return RedirectToAction(nameof(Index));
+                await _repository.Add(theme);
             }
             catch
             {
                 return StatusCode(500);
             }
+
+            return RedirectToAction(nameof(Index));
         }
 
         [HttpGet]
@@ -68,32 +72,34 @@ namespace ForumProject.Web.Controllers
                 return NotFound();
             }
 
-            var forum = _repository.GetByIdAsync(id).Result;
+            var theme = _repository.GetById(id);
 
-            if (forum == null)
+            if (theme == null)
             {
                 return NotFound();
             }
-            return View(forum);
+
+            return View(theme);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, Forum forum)
+        public async Task<IActionResult> Edit(int id, Theme theme)
         {
-            if (id != forum.Id || forum == null)
+            if (id != theme.Id || theme == null)
             {
                 return NotFound();
             }
 
             try
             {
-                await _repository.Edit(forum);
-                return RedirectToAction(nameof(Index));
+                await _repository.Edit(theme);
             }
             catch
             {
                 return StatusCode(500);
-            }     
+            }
+
+            return RedirectToAction(nameof(Index));
         }
 
         [HttpGet]
@@ -104,43 +110,30 @@ namespace ForumProject.Web.Controllers
                 return NotFound();
             }
 
-            var forum = _repository.GetByIdAsync(id).Result;
+            var theme = _repository.GetById(id);
 
-            if (forum == null)
+            if (theme == null)
             {
                 return NotFound();
             }
 
-            return View(forum);
+            return View(theme);
         }
 
         [HttpPost]
         public async Task<IActionResult> Delete(int id)
         {
+            var liquid = _repository.GetById(id);
+
             try
             {
-                var forum = _repository.GetByIdAsync(id);
-                await _repository.Delete(forum.Result);
-                return RedirectToAction(nameof(Index));
+                await _repository.Delete(liquid);
             }
             catch
             {
                 return StatusCode(500);
             }
-            
+            return RedirectToAction(nameof(Index));
         }
-
-        [HttpGet]
-        public IActionResult GetThemesFromForum(int? forumId)
-        {
-            if (forumId == null)
-            {
-                return NotFound();
-            }
-
-            var themes = _repository.GetThemesFromForum(forumId);
-            return View(themes);
-        }
-
     }
 }

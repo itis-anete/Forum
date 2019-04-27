@@ -20,39 +20,60 @@ namespace ForumProject.Infrastructure.Database.Repositories
 
         public async Task Add(Forum forum)
         {
-            await _context.Forums.AddAsync(forum);
-            await _context.SaveChangesAsync();
+            try
+            {
+                await _context.Forums.AddAsync(forum);
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
         }
 
         public async Task<Forum> GetByIdAsync(int? forumId)
         {
-            return await _context.Forums.FindAsync(forumId);
+            var forum = await _context.Forums.FindAsync(forumId);
+            return forum;
         }
 
         public async Task<Forum> GetByNameAsync(string name)
         {
             var category = await _context.Forums.FindAsync(name);
-
             return category;
         }
 
         public async Task Edit(Forum forum)
         {
-            var entity = await _context.Forums.FindAsync(forum.Id);
-            if (entity == null)
-                await _context.Forums.AddAsync(forum);
-            else
+            try
             {
-                entity = forum;
-                //entity.Name = forum.Name;
+                var entity = await _context.Forums.FindAsync(forum.Id);
+                if (entity == null)
+                    await _context.Forums.AddAsync(forum);
+                else
+                {
+                    entity = forum;
+                    //entity.Name = forum.Name;
+                }
+                await _context.SaveChangesAsync();
             }
-            await _context.SaveChangesAsync();
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
         }
 
         public async Task Delete(Forum forum)
         {
-            _context.Forums.Remove(forum);
-            await _context.SaveChangesAsync();
+            try
+            {
+                _context.Forums.Remove(forum);
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
         }
 
         public IEnumerable<Forum> GetAllForums()

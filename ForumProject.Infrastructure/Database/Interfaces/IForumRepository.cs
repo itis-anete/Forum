@@ -8,7 +8,7 @@ namespace ForumProject.Infrastructure.Database.Interfaces
 {
     public interface IForumRepository
     {
-        //IEnumerable<Theme> GetThemesFromForum(int? forumId);
+        IEnumerable<Theme> GetThemesFromForum(int? forumId);
         Task Add(Forum forum);
         Task<Forum> GetByIdAsync(int? forumId);
         Task<Forum> GetByNameAsync(string name);
