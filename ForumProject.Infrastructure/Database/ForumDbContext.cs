@@ -9,6 +9,7 @@ namespace ForumProject.Infrastructure.Database
     public class ForumDbContext : DbContext
     {
         public DbSet<Forum> Forums { get; set; }
+        public DbSet<Theme> Themes { get; set; }
 
         public ForumDbContext(DbContextOptions<ForumDbContext> options)
             : base(options)

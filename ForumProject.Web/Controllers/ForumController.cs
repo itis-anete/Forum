@@ -19,7 +19,7 @@ namespace ForumProject.Web.Controllers
 
         public IActionResult Index()
         {
-            return View(_repository.GetAll());
+            return View(_repository.GetAllForums());
         }
 
         [HttpGet]

@@ -1,4 +1,6 @@
 using ForumProject.Infrastructure.Database;
+using ForumProject.Infrastructure.Database.Interfaces;
+using ForumProject.Infrastructure.Database.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -22,9 +24,12 @@ namespace ForumProject.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            string connectionString = "Server=localhost;Port=5432;Database=ForumDatabase;UserName=postgres;Password=qwerty";
+            string connectionString = "Server=localhost;Port=8000;Database=ForumDatabase;UserName=postgres;Password=1234";
 
             services.AddDbContext<ForumDbContext>(options => options.UseNpgsql(connectionString));
+
+            services.AddScoped<IForumRepository, ForumRepository>();
+            services.AddScoped<IThemeRepository, ThemeRepository>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 

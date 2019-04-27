@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ForumProject.Core.Entities
 {
-    public class Topic
+    public class Topic : Identity
     {
         public string Head { get; set; }
         public string Text { get; set; }

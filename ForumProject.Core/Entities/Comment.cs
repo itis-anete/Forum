@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ForumProject.Core.Entities
 {
-    public class Comment
+    public class Comment : Identity
     {
         public User Writer{ get; set; }
         public string Text { get; set; }

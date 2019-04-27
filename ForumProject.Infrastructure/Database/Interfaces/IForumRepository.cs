@@ -14,6 +14,6 @@ namespace ForumProject.Infrastructure.Database.Interfaces
         Task<Forum> GetByNameAsync(string name);
         Task Edit(Forum forum);
         Task Delete(Forum forum);
-        IEnumerable<Forum> GetAll();
+        IEnumerable<Forum> GetAllForums();
     }
 }

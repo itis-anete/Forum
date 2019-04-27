@@ -43,7 +43,8 @@ namespace ForumProject.Infrastructure.Database.Repositories
                 await _context.Forums.AddAsync(forum);
             else
             {
-                entity.Name = forum.Name;
+                entity = forum;
+                //entity.Name = forum.Name;
             }
             await _context.SaveChangesAsync();
         }
@@ -54,18 +55,18 @@ namespace ForumProject.Infrastructure.Database.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public IEnumerable<Forum> GetAll()
+        public IEnumerable<Forum> GetAllForums()
         {
             var categories = _context.Forums.AsEnumerable();
 
             return categories;
         }
 
-        //public IEnumerable<Theme> GetThemesFromForum(int? forumId)
-        //{
-        //    var themes = _context.Themes.Where(x => x.forumId == forumId);
+        public IEnumerable<Theme> GetThemesFromForum(int? forumId)
+        {
+            var themes = _context.Themes.Where(x => x.ForumId == forumId);
 
-        //    return themes;
-        //}
+            return themes;
+        }
     }
 }

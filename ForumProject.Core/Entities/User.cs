@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ForumProject.Core.Entities
 {
-    public class User
+    public class User : Identity
     {
         public string Nickname { get; set; }
         public string Email { get; set; }
