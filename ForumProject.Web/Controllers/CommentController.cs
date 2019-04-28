@@ -4,24 +4,24 @@ using System.Linq;
 using System.Threading.Tasks;
 using ForumProject.Core.Entities;
 using ForumProject.Infrastructure.Database.Interfaces;
+using ForumProject.Infrastructure.Database.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ForumProject.Web.Controllers
 {
-    public class TopicController : Controller
+    public class CommentController : Controller
     {
-        private ITopicRepository _repository;
+        private ICommentRepository _repository;
 
-        public TopicController(ITopicRepository repository)
+        public CommentController(CommentRepository repository)
         {
             _repository = repository;
         }
 
-        [Authorize]
-        public IActionResult Index(int? themeId)
+        public IActionResult Index(int? topicId)
         {
-            return View(_repository.GetAllTopics(themeId));
+            return View(_repository.GetAllComments(topicId));
         }
 
         [HttpGet]
@@ -32,29 +32,29 @@ namespace ForumProject.Web.Controllers
                 return NotFound();
             }
 
-            var topic = _repository.GetById(id);
+            var comment = _repository.GetById(id);
 
-            if (topic == null)
+            if (comment == null)
             {
                 return NotFound();
             }
 
-            return View(topic);
+            return View(comment);
         }
 
         [HttpGet]
-        public IActionResult Create(int? themeId)
+        public IActionResult Create(int? topicId)
         {
-            ViewData["ThemeId"] = themeId;
+            ViewData["TopicId"] = topicId;
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Topic topic)
+        public async Task<IActionResult> Create(Comment comment)
         {
             try
             {
-                await _repository.Add(topic);
+                await _repository.Add(comment);
             }
             catch
             {
@@ -72,27 +72,27 @@ namespace ForumProject.Web.Controllers
                 return NotFound();
             }
 
-            var topic = _repository.GetById(id);
+            var comment = _repository.GetById(id);
 
-            if (topic == null)
+            if (comment == null)
             {
                 return NotFound();
             }
 
-            return View(topic);
+            return View(comment);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(int id, Topic topic)
+        public async Task<IActionResult> Edit(int id, Comment comment)
         {
-            if (id != topic.Id || topic == null)
+            if (id != comment.Id || comment == null)
             {
                 return NotFound();
             }
 
             try
             {
-                await _repository.Edit(topic);
+                await _repository.Edit(comment);
             }
             catch
             {
@@ -110,24 +110,24 @@ namespace ForumProject.Web.Controllers
                 return NotFound();
             }
 
-            var topic = _repository.GetById(id);
+            var comment = _repository.GetById(id);
 
-            if (topic == null)
+            if (comment == null)
             {
                 return NotFound();
             }
 
-            return View(topic);
+            return View(comment);
         }
 
         [HttpPost]
         public async Task<IActionResult> Delete(int id)
         {
-            var topic = _repository.GetById(id);
+            var comment = _repository.GetById(id);
 
             try
             {
-                await _repository.Delete(topic);
+                await _repository.Delete(comment);
             }
             catch
             {
@@ -137,5 +137,4 @@ namespace ForumProject.Web.Controllers
         }
     }
 }
-
 

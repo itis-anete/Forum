@@ -58,11 +58,12 @@ namespace ForumProject.Infrastructure.Database.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public IEnumerable<Theme> GetAllThemes()
+        public IEnumerable<Theme> GetAllThemes(int? forumId)
         {
-            var theme = _context.Themes.AsEnumerable();
-
-            return theme;
+            var themes = _context.Themes
+                .AsEnumerable()
+                .Where(theme => theme.ForumId == forumId);
+            return themes;
         }
     }
 }

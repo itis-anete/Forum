@@ -19,9 +19,9 @@ namespace ForumProject.Web.Controllers
         }
 
         [Authorize]
-        public IActionResult Index()
+        public IActionResult Index(int? forumId)
         {
-            return View(_repository.GetAllThemes());
+            return View(_repository.GetAllThemes(forumId));
         }
 
         [HttpGet]

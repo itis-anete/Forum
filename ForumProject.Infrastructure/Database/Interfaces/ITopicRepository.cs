@@ -9,9 +9,9 @@ namespace ForumProject.Infrastructure.Database.Interfaces
     public interface ITopicRepository
     {
         Task Add(Topic theme);
-        Topic GetById(int? themeId);
+        Topic GetById(int? topicId);
         Task Edit(Topic theme);
         Task Delete(Topic theme);
-        IEnumerable<Topic> GetAllTopics();
+        IEnumerable<Topic> GetAllTopics(int? themeId);
     }
 }

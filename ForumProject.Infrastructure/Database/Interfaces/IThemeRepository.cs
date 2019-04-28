@@ -13,6 +13,6 @@ namespace ForumProject.Infrastructure.Database.Interfaces
         Theme GetByName(string name);
         Task Edit(Theme theme);
         Task Delete(Theme theme);
-        IEnumerable<Theme> GetAllThemes();
+        IEnumerable<Theme> GetAllThemes(int? forumId);
     }
 }
