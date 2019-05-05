@@ -8,10 +8,10 @@ namespace ForumProject.Infrastructure.Database.Interfaces
 {
     public interface ITopicRepository
     {
-        Task Add(Topic theme);
+        Task Add(Topic topic);
         Topic GetById(int? topicId);
-        Task Edit(Topic theme);
-        Task Delete(Topic theme);
+        Task Edit(Topic topic);
+        Task Delete(Topic topic);
         IEnumerable<Topic> GetAllTopics(int? themeId);
     }
 }
